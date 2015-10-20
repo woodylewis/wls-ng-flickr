@@ -1,14 +1,9 @@
 <div class="container">
-	<div infinite-scroll='ctl.ne.nextPhotos()' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
-	  <div ng-repeat="photo in ctl.ne.photos">
-	  	<div class="row">
-	      <div class="twelve-columns">
-	        <div class="wls-row" ng-bind="photo.title" data-ng-click="ctl.fetchPhoto(photo._id)"></div>
-	      </div>
-      	</div>
-	  </div>
-	  <div ng-show='ne.busy'>
-        <i class="fa fa-cloud-download fa-lg"></i>
-	  </div>
-	</div>
+  <div ng-repeat="photo in ctl.pe.photos">
+  	<div class="row">
+      <div class="twelve-columns">
+        <div class="wls-row" ng-bind="photo.title"></div>
+      </div>
+  	</div>
+  </div>
 </div>

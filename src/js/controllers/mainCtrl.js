@@ -6,36 +6,29 @@ angular
 ])
 .controller('MainCtrl', MainCtrl);
 
-function MainCtrl($scope, $state, $filter, $location, $sce, PhotoEngine) {
+function MainCtrl($scope, $state, PhotoEngine) {
   var vm = this;
-  vm.ne = new PhotoEngine();
-  vm.cn = {};
-  vm.click = false;
-
-  $scope.$on('referral', function(event, args) {
-    if(vm.click === true) {
-      vm.click = false;
-    }
-    else {
-      vm.fetchUrl(args);
-    }
+  vm.pe = new PhotoEngine();
+  vm.pe.fetchPhotos()
+  .then(function(data){
+    parseFlickrResponse(data);
   });
 
+  function parseFlickrResponse(response) {
+    var prefix = "jsonFlickrApi({",
+        suffix = '},"stat":"ok"})',
+        str1 = "photos",
+        str2 = "id",
+        pos1 = response.indexOf(str1),
+        pos2 = pos1 + str1.length,
+        header = response.substring(pos1, response.indexOf(str2)),
+        remainder = response.substring(prefix.length + (header.length - 2), response.indexOf(suffix)),
+        theJson = angular.fromJson(remainder);
+
+        for(var i = 0; i < theJson.length; i++) {
+          console.log(theJson[i]);
+        }
+  }
+
   $state.go('main');
-
-  vm.fetchPhoto = function(theID) {
-    var filtered = $filter('filter')(vm.ne.photos, {_id: theID});
-    vm.cn = filtered[0];
-    vm.markup = $sce.trustAsHtml(vm.cn.body);
-    vm.click = true;
-    $location.url('/photo/' + vm.cn.url);
-  };
-
-  vm.fetchUrl = function(args) {
-    console.log('fetchUrl ', args);
-    vm.ne.fetchCurrentPhoto(args)
-    .then(function (data) {
-      console.log('PHOTO ', data);
-    });
-  };
 }

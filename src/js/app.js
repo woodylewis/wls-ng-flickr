@@ -13,9 +13,4 @@ angular.module('getphoto', [
         "state" : { templateUrl: "partials/main.html" }
       }
     });
-}])
-.controller('appCtrl', ['$scope', '$state', function($scope, $state) {
-  $scope.goHome = function () {
-    $state.go('main');
-  };
 }]);
