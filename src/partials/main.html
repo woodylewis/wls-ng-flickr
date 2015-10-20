@@ -1,9 +1,11 @@
 <div class="container">
-  <div ng-repeat="photo in ctl.photos">
-  	<div class="row">
-      <div class="twelve-columns">
-        <div class="wls-row" ng-bind="photo.id"></div>
-      </div>
-  	</div>
+	<flickr-modal show='ctl.showModal' width='80%' height='80%'>
+		<img ng-src="{{ctl.currentPhoto.medium}}"/> 
+	</flickr-modal>
+
+  	<div ng-repeat="photo in ctl.photos | limitTo: 5">
+  		<div class="wls-row">
+      			<img ng-src="{{photo.thumb}}" data-ng-click="ctl.toggleModal(photo)"/> 
+  		</div>
   </div>
 </div>

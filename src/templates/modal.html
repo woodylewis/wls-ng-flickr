@@ -1,0 +1,11 @@
+<div class='modal' ng-show='show'>
+	<!-- The overlay -->
+	<div class='modal-overlay'></div>
+	<!-- The modal dialog -->
+	<div class='modal-dialog' ng-style='dialogStyle'>
+		<div class='modal-dialog-inner' ng-transclude></div>
+		<div class='modal-button-panel'>
+	  		<button class="modal-dialog-button" data-ng-click='hideModal()'>Close</button>
+  		</div>
+	</div>
+</div>

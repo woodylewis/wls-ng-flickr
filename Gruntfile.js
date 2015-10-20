@@ -9,7 +9,8 @@ module.exports = function(grunt) {
             js: {
                 src: ['src/js/app.js',
                     'src/js/controllers/*.js',
-                    'src/js/services/*.js'],
+                    'src/js/services/*.js',
+                    'src/js/directives/*.js'],
                 dest: 'dist/js/gl-min.js'
             }
         },
@@ -22,7 +23,8 @@ module.exports = function(grunt) {
                     '.jshintrc',
                     'src/js/app.js',
                     'src/js/controllers/*.js',
-                    'src/js/services/*.js']
+                    'src/js/services/*.js',
+                    'src/js/directives/*.js']
         },
         less: {
             development: {

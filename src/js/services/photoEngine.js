@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('getphoto.photoEngine', [])
+angular
+.module('getphoto.photoEngine', [])
 .factory('PhotoEngine', ['$q', '$http', function($q, $http) {
 
   var PhotoEngine = function() {
