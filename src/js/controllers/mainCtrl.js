@@ -8,6 +8,7 @@ angular
 
 function MainCtrl($scope, $state, PhotoEngine) {
   var vm = this;
+  vm.photos = [];
   vm.pe = new PhotoEngine();
   vm.pe.fetchPhotos()
   .then(function(data){
@@ -24,6 +25,7 @@ function MainCtrl($scope, $state, PhotoEngine) {
         header = response.substring(pos1, response.indexOf(str2)),
         remainder = response.substring(prefix.length + (header.length - 2), response.indexOf(suffix)),
         theJson = angular.fromJson(remainder);
+        vm.photos = angular.fromJson(remainder);
 
         for(var i = 0; i < theJson.length; i++) {
           console.log(theJson[i]);
