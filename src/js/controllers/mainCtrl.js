@@ -1,15 +1,14 @@
 'use strict';
 
 angular
-.module('getphoto.mainCtrl', [
-  'infinite-scroll',
-  'getphoto.narrationEngine'
+.module('getphoto.mainCtrl', [ 
+  'getphoto.photoEngine'
 ])
 .controller('MainCtrl', MainCtrl);
 
-function MainCtrl($scope, $state, $filter, $location, $sce, NarrationEngine) {
+function MainCtrl($scope, $state, $filter, $location, $sce, PhotoEngine) {
   var vm = this;
-  vm.ne = new NarrationEngine();
+  vm.ne = new PhotoEngine();
   vm.cn = {};
   vm.click = false;
 
@@ -24,19 +23,19 @@ function MainCtrl($scope, $state, $filter, $location, $sce, NarrationEngine) {
 
   $state.go('main');
 
-  vm.fetchNarration = function(theID) {
-    var filtered = $filter('filter')(vm.ne.narrations, {_id: theID});
+  vm.fetchPhoto = function(theID) {
+    var filtered = $filter('filter')(vm.ne.photos, {_id: theID});
     vm.cn = filtered[0];
     vm.markup = $sce.trustAsHtml(vm.cn.body);
     vm.click = true;
-    $location.url('/narration/' + vm.cn.url);
+    $location.url('/photo/' + vm.cn.url);
   };
 
   vm.fetchUrl = function(args) {
     console.log('fetchUrl ', args);
-    vm.ne.fetchCurrentNarration(args)
+    vm.ne.fetchCurrentPhoto(args)
     .then(function (data) {
-      console.log('NARRATION ', data);
+      console.log('PHOTO ', data);
     });
   };
 }

@@ -1,9 +1,9 @@
 <div class="container">
-	<div infinite-scroll='ctl.ne.nextNarrations()' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
-	  <div ng-repeat="narration in ctl.ne.narrations">
+	<div infinite-scroll='ctl.ne.nextPhotos()' infinite-scroll-disabled='busy' infinite-scroll-distance='1'>
+	  <div ng-repeat="photo in ctl.ne.photos">
 	  	<div class="row">
 	      <div class="twelve-columns">
-	        <div class="wls-row" ng-bind="narration.title" data-ng-click="ctl.fetchNarration(narration._id)"></div>
+	        <div class="wls-row" ng-bind="photo.title" data-ng-click="ctl.fetchPhoto(photo._id)"></div>
 	      </div>
       	</div>
 	  </div>
