@@ -28,20 +28,36 @@ function MainCtrl($scope, $state, PhotoEngine) {
     for(var i = vm.pageIndex; i < (vm.pageIndex + 10); i++) {
       vm.page.push(vm.photos[i]);
     }
-        vm.pageIndex += vm.pageCount;
+    vm.pageIndex += vm.pageCount;
+      console.log('init index', vm.pageIndex);
   };
 
   vm.photoPage = function(direction) {
-    for(var i = vm.pageIndex; i < (vm.pageIndex + 10); i++) {
-      vm.page.push(vm.photos[i]);
-    }
-      if (direction === 'forward') {
-        vm.pageIndex += vm.pageCount;
+    if (direction === 'forward') {
+      vm.pageIndex += vm.pageCount;
+      if (vm.pageIndex >= vm.photos.length) {
+        vm.pageIndex = 0;
+        vm.init();
       }
-      else if (direction === 'back') {
-        vm.pageIndex -= vm.pageCount;
-      }   
-      console.log(vm.pageIndex);
+      else {
+        for(var i = vm.pageIndex; i < (vm.pageIndex + 10); i++) {
+          vm.page.push(vm.photos[i]);
+        }
+      }
+    }
+    else if (direction === 'back') {
+      vm.pageIndex -= vm.pageCount;
+      if(vm.pageIndex <= 0) {
+        vm.pageIndex = 0;
+        vm.init();
+      }
+      else {
+        for(var j = vm.pageIndex; j < (vm.pageIndex + 10); j++) {
+          vm.page.push(vm.photos[j]);
+        }
+      }
+    }   
+    console.log(vm.pageIndex);
   };
   
   vm.changePage = function(direction) {
