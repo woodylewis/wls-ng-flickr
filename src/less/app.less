@@ -6,7 +6,7 @@
 @facebook: #47639e;
 @royalblue: #4173dd;
 
-.home-link, .wls-click, .wls-row, .nav a { cursor: pointer; }
+.home-link, .wls-click, .wls-row, .wls-cell, .nav a { cursor: pointer; }
 
 .home-link {
     color:@royalblue;
@@ -59,15 +59,14 @@ img {
     }    
 }
 
-.wls-row {
+.wls-cell {
     border:1px grey dotted;
-    max-width:80%;
-    height:6em;
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom:1em;
+    display:inline;
+    float:left;
+    max-width:20%;
+    height:5em;
+    margin:2em;
     text-align:left;
-    padding-left:10%;
 }
 
 .wls-narration {
@@ -112,9 +111,7 @@ img {
         .modal-dialog-button {
         }
         .modal-dialog-inner {
-          height:16em;
-          padding:4em;
-          margin-left:8em;
+          height:95%;
           display:block;
           .modal-button-panel {
             margin-left:8em;

@@ -3,8 +3,8 @@
 		<img ng-src="{{ctl.currentPhoto.medium}}"/> 
 	</flickr-modal>
 
-  	<div ng-repeat="photo in ctl.photos | limitTo: 5">
-  		<div class="wls-row">
+  	<div ng-repeat="photo in ctl.photos | limitTo: 10">
+  		<div class="wls-cell">
       			<img ng-src="{{photo.thumb}}" data-ng-click="ctl.toggleModal(photo)"/> 
   		</div>
   </div>
