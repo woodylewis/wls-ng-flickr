@@ -3,7 +3,6 @@
 angular
 .module('getphoto', [
 	'ui.router',
-  'ui.bootstrap',
 	'getphoto.mainCtrl'
 ])
 .config(['$stateProvider', '$locationProvider', function($stateProvider) {
