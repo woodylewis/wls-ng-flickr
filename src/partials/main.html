@@ -3,9 +3,23 @@
 		<img ng-src="{{ctl.currentPhoto.medium}}"/> 
 	</flickr-modal>
 
-  	<div ng-repeat="photo in ctl.photos | limitTo: 10">
-  		<div class="wls-cell">
-      			<img ng-src="{{photo.thumb}}" data-ng-click="ctl.toggleModal(photo)"/> 
-  		</div>
-  </div>
+	<div class="row">
+	  	<div ng-repeat="photo in ctl.page">
+	  		<div class="wls-cell">
+	      			<img ng-src="{{photo.thumb}}" data-ng-click="ctl.toggleModal(photo)"/> 
+	  		</div>
+	  	</div>
+	</div><!-- row -->
+
+	<div class="row">
+	  	<div class="wls-button-panel">
+	  		<div class="wls-button-left">
+	  			<button data-ng-click="ctl.changePage('back')"/><==</button>
+	  		</div>
+	  		<div class="wls-button-right">
+	  			<button data-ng-click="ctl.changePage('forward')"/>==></button>
+	  		</div>
+	  	</div>
+	  	<div {{ctl.pageNum}}></div>
+	</div><!-- row -->
 </div>
